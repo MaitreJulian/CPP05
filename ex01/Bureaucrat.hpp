@@ -6,7 +6,7 @@
 /*   By: julian <julian@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/22 13:05:53 by julian            #+#    #+#             */
-/*   Updated: 2026/02/23 12:17:05 by julian           ###   ########.fr       */
+/*   Updated: 2026/02/23 12:49:56 by julian           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 
 #include <iostream>
 #include <stdexcept>
-#include "Form.hpp"
+class Form;
 
 class Bureaucrat
 {

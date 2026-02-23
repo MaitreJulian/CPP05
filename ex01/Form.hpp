@@ -6,7 +6,7 @@
 /*   By: julian <julian@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/23 12:04:55 by julian            #+#    #+#             */
-/*   Updated: 2026/02/23 12:29:29 by julian           ###   ########.fr       */
+/*   Updated: 2026/02/23 12:55:03 by julian           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,8 @@
 
 #include <iostream>
 #include <stdexcept>
-#include "Bureaucrat.hpp"
+
+class Bureaucrat;
 
 class Form
 {
@@ -26,6 +27,7 @@ class Form
         Form& operator=(const Form& other);
 
         bool beSigned(const Bureaucrat& bureaucrat);
+        bool isSigned();
         std::string getName() const;
 
     private:

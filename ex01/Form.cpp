@@ -6,11 +6,12 @@
 /*   By: julian <julian@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/23 12:07:59 by julian            #+#    #+#             */
-/*   Updated: 2026/02/23 12:30:43 by julian           ###   ########.fr       */
+/*   Updated: 2026/02/23 12:55:56 by julian           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Form.hpp"
+#include "Bureaucrat.hpp"
 
 Form::Form(std::string name, int gradeToSign, int gradeToExecute) : _name(name), _isSigned(false), _gradeToSign(gradeToSign), _gradeToExecute(gradeToExecute)
 {
@@ -42,6 +43,11 @@ bool Form::beSigned(const Bureaucrat& bureaucrat)
         return false;
     _isSigned = true;
     return true;
+}
+
+bool Form::isSigned()
+{
+    return _isSigned;
 }
 
 std::string Form::getName() const

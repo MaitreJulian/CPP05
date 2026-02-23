@@ -6,14 +6,14 @@
 #    By: julian <julian@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/02/22 13:46:58 by julian            #+#    #+#              #
-#    Updated: 2026/02/22 13:47:23 by julian           ###   ########.fr        #
+#    Updated: 2026/02/23 12:31:26 by julian           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = Bureaucrat
 C = c++
 CFLAGS = -Iinclude -Wall -Wextra -Werror -std=c++98
-SRC = main.cpp Bureaucrat.cpp
+SRC = main.cpp Bureaucrat.cpp Form.cpp
 OBJ = $(SRC:.cpp=.o)
 
 all: $(NAME)

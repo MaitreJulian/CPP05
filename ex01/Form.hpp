@@ -6,7 +6,7 @@
 /*   By: julian <julian@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/23 12:04:55 by julian            #+#    #+#             */
-/*   Updated: 2026/02/23 12:18:26 by julian           ###   ########.fr       */
+/*   Updated: 2026/02/23 12:29:29 by julian           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@ class Form
 
         bool beSigned(const Bureaucrat& bureaucrat);
         std::string getName() const;
-        void sign();
 
     private:
         std::string _name;
@@ -35,5 +34,7 @@ class Form
         int _gradeToSign;
         int _gradeToExecute;
 };
+
+std::ostream& operator<<(std::ostream& os, const Form& form);
 
 #endif

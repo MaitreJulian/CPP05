@@ -6,7 +6,7 @@
 /*   By: julian <julian@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/23 12:07:59 by julian            #+#    #+#             */
-/*   Updated: 2026/02/23 12:18:42 by julian           ###   ########.fr       */
+/*   Updated: 2026/02/23 12:30:43 by julian           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,4 +47,10 @@ bool Form::beSigned(const Bureaucrat& bureaucrat)
 std::string Form::getName() const
 {
     return _name;
+}
+
+std::ostream& operator<<(std::ostream& os, const Form& form)
+{
+    os << "Form: " << form.getName();
+    return os;
 }

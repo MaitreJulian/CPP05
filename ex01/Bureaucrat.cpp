@@ -6,7 +6,7 @@
 /*   By: julian <julian@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/22 13:06:58 by julian            #+#    #+#             */
-/*   Updated: 2026/02/23 12:53:59 by julian           ###   ########.fr       */
+/*   Updated: 2026/02/23 13:54:09 by julian           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,18 @@
 
 Bureaucrat::Bureaucrat(std::string name, int grade) : _name(name), _grade(grade)
 {
+    if (_grade < 1)
+    {
+        std::cout << _name << " : Bureaucrat::GradeTooHighException" << std::endl;
+        std::cout << "Grade has been set to 1" << std::endl;
+        _grade = 1;
+    }
+    else if (_grade > 150)
+    {
+        std::cout << _name << " : Bureaucrat::GradeTooLowException" << std::endl;
+        std::cout << "Grade has been set to 150" << std::endl;
+        _grade = 150;
+    }
 }
 
 Bureaucrat::Bureaucrat(const Bureaucrat& other) : _name(other._name), _grade(other._grade)

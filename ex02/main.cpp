@@ -6,31 +6,21 @@
 /*   By: julian <julian@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/22 13:06:46 by julian            #+#    #+#             */
-/*   Updated: 2026/02/23 13:54:54 by julian           ###   ########.fr       */
+/*   Updated: 2026/02/23 14:18:51 by julian           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
-#include "Form.hpp"
 
 int main()
 {
     // Test cases for Bureaucrat and Form classes
     Bureaucrat Spy("James bond", 20);
     Bureaucrat OSS117 ("Brice de Nice", 50);
-    Form Topsecret ("Project Phoenix", 30, 20);
-    
-    Topsecret.isSigned();
-    std::cout << Spy << std::endl;
-    std::cout << Topsecret << std::endl;
-
-    Spy.signForm(Topsecret);
-    OSS117.signForm(Topsecret);
     
     // Test cases for grade boundaries
     Bureaucrat High("High", 0);
     Bureaucrat Low("Low", 151);
-    Form InvalidForm("Invalid", 0, 151);
     
     return 0;
 }

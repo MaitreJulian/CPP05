@@ -6,7 +6,7 @@
 /*   By: julian <julian@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/23 17:14:04 by julian            #+#    #+#             */
-/*   Updated: 2026/02/23 19:41:13 by julian           ###   ########.fr       */
+/*   Updated: 2026/03/07 23:46:15 by julian           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ PresidentialPardonForm::~PresidentialPardonForm()
 {
 }
 
-void PresidentialPardonForm::execute (const Bureaucrat& executor)
+void PresidentialPardonForm::execute (const Bureaucrat& executor) const
 {
     
     if(executor.getGrade() > 5)

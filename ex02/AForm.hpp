@@ -17,12 +17,12 @@ class AForm
         bool beSigned(const Bureaucrat& bureaucrat);
 
         //getteurs
-        bool isSigned();
+        bool isSigned() const;
         int getGradeToSign() const;
         int getGradeToExecute() const;
         std::string getName() const;
 
-        virtual void execute(const Bureaucrat& executor) = 0;
+        virtual void execute(const Bureaucrat& executor) const = 0;
 
     private:
         std::string _name;

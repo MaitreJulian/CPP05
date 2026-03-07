@@ -6,7 +6,7 @@
 /*   By: julian <julian@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/22 13:05:53 by julian            #+#    #+#             */
-/*   Updated: 2026/02/23 12:49:56 by julian           ###   ########.fr       */
+/*   Updated: 2026/03/07 23:54:09 by julian           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 
 #include <iostream>
 #include <stdexcept>
-class Form;
+class AForm;
 
 class Bureaucrat
 {
@@ -30,7 +30,8 @@ class Bureaucrat
         void subGrade();
         std::string getName() const;
         int getGrade() const;
-        void signForm(Form& form) const;
+        void signForm(AForm& form) const;
+        void executeForm(const AForm& form) const;
 
     private:
         std::string _name;

@@ -6,7 +6,7 @@
 /*   By: julian <julian@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/23 17:02:12 by julian            #+#    #+#             */
-/*   Updated: 2026/02/23 17:31:13 by julian           ###   ########.fr       */
+/*   Updated: 2026/03/07 23:51:04 by julian           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ bool AForm::beSigned(const Bureaucrat& bureaucrat)
 }
 
 
-bool AForm::isSigned()
+bool AForm::isSigned() const
 {
     return _isSigned;
 }

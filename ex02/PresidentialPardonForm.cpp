@@ -38,12 +38,12 @@ PresidentialPardonForm::~PresidentialPardonForm()
 
 void PresidentialPardonForm::execute (const Bureaucrat& executor)
 {
-    
-    if(executor.getGrade() > 5)
+    if (executor.getGrade() > 5)
     {
-        std::cout << executor.getName() << " wasn't pardonned by Zaphod Beeblebrox!"<< std::endl;
+        std::cout << _target << " wasn't pardonned by Zaphod Beeblebrox!" << std::endl;
+        return;
     }
-    std::cout << executor.getName() << " was pardonned by Zaphod Beeblebrox!"<< std::endl;
+    std::cout << _target << " was pardonned by Zaphod Beeblebrox!" << std::endl;
 }
 
 

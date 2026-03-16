@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
-#include "Form.hpp"
+#include "AForm.hpp"
 
 Bureaucrat::Bureaucrat(std::string name, int grade) : _name(name), _grade(grade)
 {
@@ -87,7 +87,7 @@ int Bureaucrat::getGrade() const
     return _grade;
 }
 
-void Bureaucrat::signForm(Form& form) const
+void Bureaucrat::signForm(AForm form) const
 {
     if (form.beSigned(*this))
         std::cout << _name << " signed " << form.getName() << std::endl;

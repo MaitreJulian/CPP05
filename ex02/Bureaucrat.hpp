@@ -16,7 +16,7 @@
 
 #include <iostream>
 #include <stdexcept>
-class Form;
+class AForm;
 
 class Bureaucrat
 {
@@ -30,7 +30,7 @@ class Bureaucrat
         void subGrade();
         std::string getName() const;
         int getGrade() const;
-        void signForm(Form& form) const;
+        void signForm(AForm form) const;
 
     private:
         std::string _name;

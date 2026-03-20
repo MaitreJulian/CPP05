@@ -16,6 +16,7 @@
 
 PresidentialPardonForm::PresidentialPardonForm(std::string target) : AForm("PresidentialPardonForm", 25, 5), _target(target)
 {
+    std::cout << "PresidentialPardonForm constructor called" << std::endl;
 }
 
 PresidentialPardonForm::PresidentialPardonForm(const PresidentialPardonForm& other) : AForm(other), _target(other._target)
@@ -34,16 +35,12 @@ PresidentialPardonForm& PresidentialPardonForm::operator=(const PresidentialPard
 
 PresidentialPardonForm::~PresidentialPardonForm()
 {
+    std::cout << "PresidentialPardonForm destructor called" << std::endl;
 }
 
-void PresidentialPardonForm::execute (const Bureaucrat& executor) const
+void PresidentialPardonForm::executeAction () const
 {
-    if (executor.getGrade() > 5)
-    {
-        std::cout << _target << " wasn't pardonned by Zaphod Beeblebrox!" << std::endl;
-        return;
-    }
-    std::cout << _target << " was pardonned by Zaphod Beeblebrox!" << std::endl;
+    std::cout << _target << " has been pardonned by Zaphod Beeblebrox!" << std::endl;
 }
 
 

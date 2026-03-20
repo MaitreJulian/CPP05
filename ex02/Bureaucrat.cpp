@@ -101,12 +101,21 @@ std::ostream& operator<<(std::ostream& os, const Bureaucrat& bureaucrat)
     return os;
 }
 
-void Bureaucrat::executeForm(AForm const & form) const
-{
-    if (form.isSigned() && _grade <= form.getGradeToExecute())
-        std::cout << _name << " executed " << form.getName() << std::endl;
-    else if (!form.isSigned())
-        std::cout << _name << " couldn't execute " << form.getName() << " because the form is not signed." << std::endl;
-    else
-        std::cout << _name << " couldn't execute " << form.getName() << " because their grade is too low." << std::endl;
+void Bureaucrat::executeForm(const AForm & form) const
+{   try
+    {
+        if (form.isSigned() && _grade <= form.getGradeToExecute())
+        {
+            form.execute(*this);
+            std::cout << _name << " executed " << form.getName() << std::endl;
+        }
+        else if (!form.isSigned())
+            throw std::runtime_error("Form is not signed");
+        else
+            throw std::runtime_error(_name + "'s grade is too low");
+    }
+    catch (const std::exception& e)
+    {
+        std::cerr << "An error occurred while executing the form: " << e.what() << std::endl;
+    }
 }

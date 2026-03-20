@@ -18,24 +18,27 @@
 
 int main()
 {
-    // Test cases for Bureaucrat and Form classes
-    Bureaucrat Spy("James bond", 20);
-    Bureaucrat OSS117 ("Brice de Nice", 50);
+
+    Bureaucrat High("High", 1);
+    Bureaucrat Low("Low", 150);
+    std::cout << std::endl;
     
-    // Test cases for grade boundaries
-    Bureaucrat High("High", 0);
-    Bureaucrat Low("Low", 151);
-    
-    // Test cases for forms
+    std::cout << "----- Testing SpecialForm -----" << std::endl;
     ShrubberyCreationForm shrubbery("Home");
     RobotomyRequestForm robotomy("Target");
     PresidentialPardonForm pardon("Prisoner");
-    Spy.signForm(shrubbery);
-    Spy.signForm(robotomy);
-    Spy.signForm(pardon);
-    Spy.executeForm(shrubbery);
-    Spy.executeForm(robotomy);
-    Spy.executeForm(pardon);
-    
+    std::cout << std::endl;
+    shrubbery.beSigned(High);
+    shrubbery.executeAction();
+    std::cout << std::endl;
+    robotomy.beSigned(High);
+    robotomy.executeAction();
+    std::cout << std::endl;
+    pardon.beSigned(High);
+    pardon.executeAction();
+    std::cout << std::endl;
+    High.executeForm((const AForm&) robotomy);
+    Low.executeForm((const AForm&) robotomy);
+    std::cout << std::endl;
     return 0;
 }

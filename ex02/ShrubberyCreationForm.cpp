@@ -16,6 +16,7 @@
 
 ShrubberyCreationForm::ShrubberyCreationForm(std::string target) : AForm("ShrubberyCreationForm", 145, 137), _target(target)
 {
+    std::cout << "ShrubberyCreationForm constructor called" << std::endl;
 }
 
 ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm& other) : AForm(other), _target(other._target)
@@ -31,15 +32,12 @@ ShrubberyCreationForm& ShrubberyCreationForm::operator=(const ShrubberyCreationF
 
 ShrubberyCreationForm::~ShrubberyCreationForm()
 {
+    std::cout << "ShrubberyCreationForm destructor called" << std::endl;
 }
 
-void ShrubberyCreationForm::execute (const Bureaucrat& executor) const
+void ShrubberyCreationForm::executeAction () const
 {
-    if(executor.getGrade() > 137 || !isSigned())
-    {
-        std::cout << _target << " couldn't be created! " << executor.getName() << " has insufficient grade."<< std::endl;
-        return;
-    }
+
     std::string filename = _target + "_shrubbery";
     std::ofstream file(filename.c_str());
     if (!file.is_open())
@@ -47,6 +45,7 @@ void ShrubberyCreationForm::execute (const Bureaucrat& executor) const
         std::cerr << "Error: Could not create file." << std::endl;
         return;
     }
+    std::cout << "The tree has been planted in " << filename << std::endl;
     file << "       _-_" << std::endl;
     file << "    /~~   ~~\\" << std::endl;
     file << " /~~         ~~\\" << std::endl;

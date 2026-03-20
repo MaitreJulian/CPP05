@@ -14,17 +14,22 @@
 
 Bureaucrat::Bureaucrat(std::string name, int grade) : _name(name), _grade(grade)
 {
-    if (_grade < 1)
+    try
     {
-        std::cout << "Bureaucrat::GradeTooHighException" << std::endl;
-        std::cout << "Grade has been set to 1" << std::endl;
-        _grade = 1;
+        if (_grade < 1)
+        {
+            _grade = 1;
+            throw std::out_of_range("Bureaucrat::GradeTooHighException");
+        }
+        else if (_grade > 150)
+        {
+            _grade = 150;
+            throw std::out_of_range("Bureaucrat::GradeTooLowException");
+        }
     }
-    else if (_grade > 150)
+    catch (const std::out_of_range& e)
     {
-        std::cout << "Bureaucrat::GradeTooLowException" << std::endl;
-        std::cout << "Grade has been set to 150" << std::endl;
-        _grade = 150;
+        std::cerr << e.what() << std::endl;
     }
 }
 
@@ -52,11 +57,11 @@ void Bureaucrat::addGrade()
     {
         _grade--;
         if (_grade < 1)
-            throw std::out_of_range("Grade too high");
+            throw std::out_of_range("Bureaucrat::GradeTooHighException");
     }
     catch (const std::out_of_range& e)
     {
-        std::cout << "Bureaucrat::GradeTooHighException" << std::endl;
+        std::cout << e.what() << std::endl;
         _grade = 1;
     }
 }
@@ -67,11 +72,11 @@ void Bureaucrat::subGrade()
     {
         _grade++;
         if (_grade > 150)
-            throw std::out_of_range("Grade too low");
+            throw std::out_of_range("Bureaucrat::GradeTooLowException");
     }
     catch (const std::out_of_range& e)
     {
-        std::cout << "Bureaucrat::GradeTooLowException" << std::endl;
+        std::cout << e.what() << std::endl;
         _grade = 150;
     }
 }

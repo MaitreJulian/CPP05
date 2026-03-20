@@ -3,17 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ShrubberyCreationForm.cpp                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: julian <julian@student.42.fr>              +#+  +:+       +#+        */
+/*   By: jvenkata <jvenkata@student.42belgium.be    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/23 17:14:33 by julian            #+#    #+#             */
-/*   Updated: 2026/03/07 23:47:35 by julian           ###   ########.fr       */
+/*   Updated: 2026/03/16 15:18:51 by jvenkata         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <fstream>
 #include "Bureaucrat.hpp"
-#include "AForm.hpp"
 #include "ShrubberyCreationForm.hpp"
+#include <fstream>
 
 ShrubberyCreationForm::ShrubberyCreationForm(std::string target) : AForm("ShrubberyCreationForm", 145, 137), _target(target)
 {
@@ -25,11 +24,8 @@ ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm& other)
 
 ShrubberyCreationForm& ShrubberyCreationForm::operator=(const ShrubberyCreationForm& other)
 {
-    if (this != &other)
-    {
-        AForm::operator=(other);
-        _target = other._target;
-    }
+    AForm::operator=(other);
+    _target = other._target;
     return *this;
 }
 
@@ -44,7 +40,8 @@ void ShrubberyCreationForm::execute (const Bureaucrat& executor) const
         std::cout << _target << " couldn't be created! " << executor.getName() << " has insufficient grade."<< std::endl;
         return;
     }
-    std::ofstream file(_target + "_shrubbery");
+    std::string filename = _target + "_shrubbery";
+    std::ofstream file(filename.c_str());
     if (!file.is_open())
     {
         std::cerr << "Error: Could not create file." << std::endl;
@@ -61,4 +58,5 @@ void ShrubberyCreationForm::execute (const Bureaucrat& executor) const
     file << "      // \\\\" << std::endl;
     file.close();
 }
+
 

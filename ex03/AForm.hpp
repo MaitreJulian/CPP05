@@ -11,7 +11,7 @@ class AForm
     public:
         AForm(std::string name, int gradeToSign, int gradeToExecute);
         AForm(const AForm& other);
-        ~AForm();
+        virtual ~AForm();
         AForm& operator=(const AForm& other);
 
         bool beSigned(const Bureaucrat& bureaucrat);

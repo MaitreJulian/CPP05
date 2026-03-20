@@ -15,19 +15,24 @@
 
 Form::Form(std::string name, int gradeToSign, int gradeToExecute) : _name(name), _isSigned(false), _gradeToSign(gradeToSign), _gradeToExecute(gradeToExecute)
 {
-    if (_gradeToSign < 1 || _gradeToExecute < 1)
+    try
     {
-        std::cout << _name << " : Form::GradeTooHighException" << std::endl;
-        std::cout << "Grade has been set to 1" << std::endl;
-        _gradeToSign = 1;
-        _gradeToExecute = 1;
+        if (_gradeToExecute < 1 || _gradeToSign < 1)
+        {
+            _gradeToExecute = 1;
+            _gradeToSign = 1;
+            throw std::out_of_range("Form::GradeTooHighException");
+        }
+        else if (_gradeToExecute > 150 || _gradeToSign > 150)
+        {
+            _gradeToExecute = 150;
+            _gradeToSign = 150;
+            throw std::out_of_range("Form::GradeTooLowException");
+        }
     }
-    else if (_gradeToSign > 150 || _gradeToExecute > 150)
+    catch (const std::out_of_range& e)
     {
-        std::cout << _name << " : Form::GradeTooLowException" << std::endl;
-        std::cout << "Grade has been set to 150" << std::endl;
-        _gradeToSign = 150;
-        _gradeToExecute = 150;
+        std::cerr << e.what() << std::endl;
     }
 }
 
@@ -53,12 +58,19 @@ Form& Form::operator=(const Form& other)
 
 bool Form::beSigned(const Bureaucrat& bureaucrat)
 {
-    if (bureaucrat.getGrade() > _gradeToSign)
-        return false;
-    _isSigned = true;
-    return true;
+    try
+    {
+        if (bureaucrat.getGrade() > _gradeToSign)
+            throw std::out_of_range("Form::GradeTooLowException");
+        _isSigned = true;
+        return true;
+    }
+    catch(const std::exception& e)
+    {
+        std::cerr << e.what() << std::endl;
+    }
+    return false;
 }
-
 
 bool Form::isSigned()
 {

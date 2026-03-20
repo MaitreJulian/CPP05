@@ -54,8 +54,12 @@ AForm& AForm::operator=(const AForm& other)
 bool AForm::beSigned(const Bureaucrat& bureaucrat)
 {
     if (bureaucrat.getGrade() > _gradeToSign)
+    {
+        std::cout << bureaucrat.getName() << " couldn't sign " << _name << " because their grade is too low." << std::endl;
         return false;
+    }
     _isSigned = true;
+    std::cout << bureaucrat.getName() << " signed " << _name << std::endl;
     return true;
 }
 

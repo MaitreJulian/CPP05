@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   PresidentialPardonForm.cpp                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: julian <julian@student.42.fr>              +#+  +:+       +#+        */
+/*   By: jvenkata <jvenkata@student.42belgium.be    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/23 17:14:04 by julian            #+#    #+#             */
-/*   Updated: 2026/03/07 23:46:15 by julian           ###   ########.fr       */
+/*   Updated: 2026/03/16 15:25:28 by jvenkata         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 
 PresidentialPardonForm::PresidentialPardonForm(std::string target) : AForm("PresidentialPardonForm", 25, 5), _target(target)
 {
+    std::cout << "PresidentialPardonForm constructor called" << std::endl;
 }
 
 PresidentialPardonForm::PresidentialPardonForm(const PresidentialPardonForm& other) : AForm(other), _target(other._target)
@@ -34,16 +35,17 @@ PresidentialPardonForm& PresidentialPardonForm::operator=(const PresidentialPard
 
 PresidentialPardonForm::~PresidentialPardonForm()
 {
+    std::cout << "PresidentialPardonForm destructor called" << std::endl;
 }
 
 void PresidentialPardonForm::execute (const Bureaucrat& executor) const
 {
-    
-    if(executor.getGrade() > 5)
+    if (executor.getGrade() > 5)
     {
-        std::cout << executor.getName() << " wasn't pardonned by Zaphod Beeblebrox!"<< std::endl;
+        std::cout << _target << " wasn't pardonned by Zaphod Beeblebrox!" << std::endl;
+        return;
     }
-    std::cout << executor.getName() << " was pardonned by Zaphod Beeblebrox!"<< std::endl;
+    std::cout << _target << " was pardonned by Zaphod Beeblebrox!" << std::endl;
 }
 
 

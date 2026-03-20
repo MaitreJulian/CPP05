@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: julian <julian@student.42.fr>              +#+  +:+       +#+        */
+/*   By: jvenkata <jvenkata@student.42belgium.be    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/22 13:06:46 by julian            #+#    #+#             */
-/*   Updated: 2026/03/07 23:55:41 by julian           ###   ########.fr       */
+/*   Updated: 2026/03/16 15:24:27 by jvenkata         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,11 @@
 #include "PresidentialPardonForm.hpp"
 #include "RobotomyRequestForm.hpp"
 #include "ShrubberyCreationForm.hpp"
+#include "Intern.hpp"
 
 int main()
 {
+    std::cout << "----- Bureaucrat and Form Test Cases -----" << std::endl;
     // Test cases for Bureaucrat and Form classes
     Bureaucrat Spy("James bond", 20);
     Bureaucrat OSS117 ("Brice de Nice", 50);
@@ -36,6 +38,14 @@ int main()
     Spy.executeForm(shrubbery);
     Spy.executeForm(robotomy);
     Spy.executeForm(pardon);
-    
+
+    Intern intern;
+    AForm* form = intern.makeForm("shrubbery creation", "Home");
+    if (form)
+    {
+        Spy.signForm(*form);
+        Spy.executeForm(*form);
+        delete form;
+    }
     return 0;
 }

@@ -15,22 +15,44 @@
 
 int main()
 {
-    // Test cases for Bureaucrat and Form classes
-    Bureaucrat Spy("James bond", 20);
-    Bureaucrat OSS117 ("Brice de Nice", 50);
-    Form Topsecret ("Project Phoenix", 30, 20);
-    
-    Topsecret.isSigned();
-    std::cout << Spy << std::endl;
-    std::cout << Topsecret << std::endl;
+    std::cout << "----- Testing Bureaucrat -----" << std::endl;
+    std::cout << std::endl;
+    // Bureaucrat bureaucrat("John Doe", 0);
+    Bureaucrat bureaucrat2("Jane Doe", 150);
+    Bureaucrat Spy("Spy", 25);
+    std::cout << std::endl;
+    // std::cout << "----- Testing addGrade and subGrade -----" << std::endl;
+    // std::cout << std::endl;
+    // bureaucrat.addGrade();
+    // bureaucrat2.subGrade();
+    // std::cout << std::endl;
+    // std::cout << "----- Operator << -----" << std::endl;
+    // std::cout << std::endl;
+    // std::cout << bureaucrat << std::endl;
+    // std::cout << bureaucrat2 << std::endl;
 
+    std::cout << "----- Testing Form -----" << std::endl;
+    Form Topsecret("Project Phoenix", 30, 20);
+    if (Topsecret.isSigned())
+        std::cout << "Form " << Topsecret.getName() << " is signed." << std::endl;
+    else
+        std::cout << "Form " << Topsecret.getName() << " is not signed yet." << std::endl;
+    std::cout << bureaucrat2.getName() << " is trying to sign " << Topsecret.getName() << std::endl;
+    Topsecret.beSigned(bureaucrat2);
+    if (Topsecret.isSigned())
+        std::cout << "Form " << Topsecret.getName() << " is signed." << std::endl;
+    else
+        std::cout << "Form " << Topsecret.getName() << " is not signed yet." << std::endl;
     Spy.signForm(Topsecret);
-    OSS117.signForm(Topsecret);
-    
-    // Test cases for grade boundaries
-    Bureaucrat High("High", 0);
-    Bureaucrat Low("Low", 151);
+    if (Topsecret.isSigned())
+        std::cout << "Form " << Topsecret.getName() << " is signed." << std::endl;
+    else
+        std::cout << "Form " << Topsecret.getName() << " is not signed yet." << std::endl;
+    std::cout << std::endl;
+
     Form InvalidForm("Invalid", 0, 151);
-    
+    std::cout << Topsecret << std::endl;
+    std::cout << InvalidForm << std::endl;
+
     return 0;
 }

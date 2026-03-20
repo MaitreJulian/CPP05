@@ -14,12 +14,17 @@
 #define FORM_HPP
 
 #include <iostream>
-#include <stdexcept>
 
 class Bureaucrat;
 
 class Form
 {
+    private:
+        std::string _name;
+        bool _isSigned;
+        int _gradeToSign;
+        int _gradeToExecute;
+
     public:
         Form(std::string name, int gradeToSign, int gradeToExecute);
         Form(const Form& other);
@@ -32,12 +37,6 @@ class Form
         int getGradeToSign() const;
         int getGradeToExecute() const;
         std::string getName() const;
-
-    private:
-        std::string _name;
-        bool _isSigned;
-        int _gradeToSign;
-        int _gradeToExecute;
 };
 
 std::ostream& operator<<(std::ostream& os, const Form& form);

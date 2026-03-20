@@ -15,6 +15,7 @@
 
 Form::Form(std::string name, int gradeToSign, int gradeToExecute) : _name(name), _isSigned(false), _gradeToSign(gradeToSign), _gradeToExecute(gradeToExecute)
 {
+    std::cout << "Form " << _name << " has been created with grade " << _gradeToSign << " to sign and grade " << _gradeToExecute << " to execute." << std::endl;
     try
     {
         if (_gradeToExecute < 1 || _gradeToSign < 1)
@@ -33,6 +34,7 @@ Form::Form(std::string name, int gradeToSign, int gradeToExecute) : _name(name),
     catch (const std::out_of_range& e)
     {
         std::cerr << e.what() << std::endl;
+        std::cerr << "Form " << _name << " has been assigned grade " << _gradeToSign << " to sign and grade " << _gradeToExecute << " to execute." << std::endl;
     }
 }
 
@@ -68,6 +70,7 @@ bool Form::beSigned(const Bureaucrat& bureaucrat)
     catch(const std::exception& e)
     {
         std::cerr << e.what() << std::endl;
+        std::cerr << "Form " << _name << " could not be signed by " << bureaucrat.getName() << std::endl;
     }
     return false;
 }

@@ -10,7 +10,7 @@
 #                                                                              #
 # **************************************************************************** #
 
-NAME = Bureaucrat
+NAME = Form
 C = c++
 CFLAGS = -Iinclude -Wall -Wextra -Werror -std=c++98
 SRC = main.cpp Bureaucrat.cpp Form.cpp

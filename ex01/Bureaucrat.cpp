@@ -11,9 +11,11 @@
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
+#include "Form.hpp"
 
 Bureaucrat::Bureaucrat(std::string name, int grade) : _name(name), _grade(grade)
 {
+    std::cout << "Bureaucrat " << _name << " has joined the enterprise." << std::endl;
     try
     {
         if (_grade < 1)
@@ -30,6 +32,7 @@ Bureaucrat::Bureaucrat(std::string name, int grade) : _name(name), _grade(grade)
     catch (const std::out_of_range& e)
     {
         std::cerr << e.what() << std::endl;
+        std::cout << "Bureaucrat " << _name << " has been assigned grade " << _grade << "." << std::endl;
     }
 }
 
@@ -89,6 +92,14 @@ std::string Bureaucrat::getName() const
 int Bureaucrat::getGrade() const
 {
     return _grade;
+}
+
+void Bureaucrat::signForm(Form& form) const
+{
+    if (form.beSigned(*this))
+        std::cout << _name << " signed " << form.getName() << std::endl;
+    else
+        std::cout << _name << " couldn't sign " << form.getName() << " because his grade is too low." << std::endl;
 }
 
 std::ostream& operator<<(std::ostream& os, const Bureaucrat& bureaucrat)

@@ -89,3 +89,20 @@ std::ostream& operator<<(std::ostream& os, const AForm& Aform)
     os << "AForm: " << Aform.getName();
     return os;
 }
+
+void AForm::execute(const Bureaucrat& executor) const
+{
+    try 
+    {
+        if (!isSigned())
+        throw std::runtime_error("Form is not signed");
+        if (executor.getGrade() > _gradeToExecute)
+        throw std::runtime_error("Grade is too low");
+    }
+    catch (const std::exception& e)
+    {
+        std::cerr << e.what() << std::endl;
+        return;
+    }
+    executeAction();
+}

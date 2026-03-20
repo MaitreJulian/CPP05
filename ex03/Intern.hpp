@@ -26,7 +26,11 @@ class Intern
         ~Intern();
         Intern& operator=(const Intern& other);
 
-        AForm* makeForm(std::string formName, std::string target) const;
+        AForm* createShrubberyCreation(const std::string & target) const;
+        AForm* createRobotomyRequest(const std::string & target) const;
+        AForm* createPresidentialPardon(const std::string & target) const;
+
+        AForm* makeForm(const std::string &formName, const std::string &target) const;
 };
 
 #endif

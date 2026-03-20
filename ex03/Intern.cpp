@@ -35,28 +35,48 @@ Intern::~Intern()
     std::cout << "Bureaucratic work is done. The intern has been fired." << std::endl;
 }
 
-AForm* Intern::makeForm(std::string formName, std::string target) const
+AForm * Intern::createShrubberyCreation(const std::string & target) const
 {
-    if (formName == "ShrubberyCreationForm")
-    {
-        std::cout << " Intern creates " << formName << std::endl;
-        return new ShrubberyCreationForm(target);
-    }
-    else if (formName == "RobotomyRequestForm")
-    {
-        std::cout << " Intern creates " << formName << std::endl;
-        return new RobotomyRequestForm(target);
-    }
-    else if (formName == "PresidentialPardonForm")
-    {
-        std::cout << " Intern creates " << formName << std::endl;
-        return new PresidentialPardonForm(target);
-    }
-    else
-    {
-        std::cout << "Intern couldn't create form: " << formName << " doesn't exist." << std::endl;
-        return NULL;
-    }
-    
+    return new ShrubberyCreationForm(target);
 }
+
+AForm * Intern::createRobotomyRequest(const std::string & target) const
+{
+    return new RobotomyRequestForm(target);
+}
+
+AForm * Intern::createPresidentialPardon(const std::string & target) const
+{
+    return new PresidentialPardonForm(target);
+}
+
+AForm * Intern::makeForm(const std::string & formName, const std::string & target) const
+{
+    if (target.empty())
+    {
+		std::cout << "Error: Target must be specified ''" << target << " is not recognized." << std::endl;
+        throw std::invalid_argument("Error: Target must be specified and cannot be empty.");
+    }
+    std::string formTypes[3] = {"shrubbery creation", "robotomy request", "presidential pardon"};
+    AForm* (Intern::*formCreators[3])(const std::string&) const = {
+        &Intern::createShrubberyCreation,
+        &Intern::createRobotomyRequest,
+        &Intern::createPresidentialPardon
+    };
+    
+    for (int i = 0; i < 3; i++)
+    {
+        if (formName == formTypes[i])
+        {
+            AForm* form = (this->*formCreators[i])(target);
+            std::cout << "Intern creates " << form->getName() << std::endl;
+            return form;
+        }
+    }
+
+    std::cout << "Error: Form name '" << formName << "' is not recognized." << std::endl;
+    return NULL;
+}
+
+
 

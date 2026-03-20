@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   PresidentialPardonForm.cpp                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jvenkata <jvenkata@student.42belgium.be    +#+  +:+       +#+        */
+/*   By: julian <julian@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/23 17:14:04 by julian            #+#    #+#             */
-/*   Updated: 2026/03/16 15:25:28 by jvenkata         ###   ########.fr       */
+/*   Updated: 2026/03/07 23:46:15 by julian           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,14 +38,9 @@ PresidentialPardonForm::~PresidentialPardonForm()
     std::cout << "PresidentialPardonForm destructor called" << std::endl;
 }
 
-void PresidentialPardonForm::execute (const Bureaucrat& executor) const
+void PresidentialPardonForm::executeAction () const
 {
-    if (executor.getGrade() > 5)
-    {
-        std::cout << _target << " wasn't pardonned by Zaphod Beeblebrox!" << std::endl;
-        return;
-    }
-    std::cout << _target << " was pardonned by Zaphod Beeblebrox!" << std::endl;
+    std::cout << _target << " has been pardonned by Zaphod Beeblebrox!" << std::endl;
 }
 
 

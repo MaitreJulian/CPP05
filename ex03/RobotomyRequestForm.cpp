@@ -41,16 +41,11 @@ RobotomyRequestForm::~RobotomyRequestForm()
     std::cout << "RobotomyRequestForm destructor called" << std::endl;
 }
 
-void RobotomyRequestForm::execute (const Bureaucrat& executor) const
+void RobotomyRequestForm::executeAction () const
 {
-    if(executor.getGrade() > 45 || !isSigned())
-    {
-        std::cout << _target << " couldn't be robotomized! " << executor.getName() << " has insufficient grade."<< std::endl;
-        return;
-    }
     std::cout << "Drilling noises... " << std::endl;
     if (std::rand() % 2)
-        std::cout << _target << " has been robotomized successfully!"<< std::endl;
+        std::cout << _target << " has been robotomized successfully! "<< std::endl;
     else
         std::cout << _target << " hasn't been robotomized!"<< std::endl;
 }

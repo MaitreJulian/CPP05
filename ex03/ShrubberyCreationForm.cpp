@@ -6,7 +6,7 @@
 /*   By: jvenkata <jvenkata@student.42belgium.be    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/23 17:14:33 by julian            #+#    #+#             */
-/*   Updated: 2026/03/16 14:51:43 by jvenkata         ###   ########.fr       */
+/*   Updated: 2026/03/16 15:18:51 by jvenkata         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,15 +32,12 @@ ShrubberyCreationForm& ShrubberyCreationForm::operator=(const ShrubberyCreationF
 
 ShrubberyCreationForm::~ShrubberyCreationForm()
 {
+    std::cout << "ShrubberyCreationForm destructor called" << std::endl;
 }
 
-void ShrubberyCreationForm::execute (const Bureaucrat& executor) const
+void ShrubberyCreationForm::executeAction () const
 {
-    if(executor.getGrade() > 137 || !isSigned())
-    {
-        std::cout << _target << " couldn't be created! " << executor.getName() << " has insufficient grade."<< std::endl;
-        return;
-    }
+
     std::string filename = _target + "_shrubbery";
     std::ofstream file(filename.c_str());
     if (!file.is_open())
@@ -48,6 +45,7 @@ void ShrubberyCreationForm::execute (const Bureaucrat& executor) const
         std::cerr << "Error: Could not create file." << std::endl;
         return;
     }
+    std::cout << "The tree has been planted in " << filename << std::endl;
     file << "       _-_" << std::endl;
     file << "    /~~   ~~\\" << std::endl;
     file << " /~~         ~~\\" << std::endl;

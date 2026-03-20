@@ -14,6 +14,7 @@
 
 Bureaucrat::Bureaucrat(std::string name, int grade) : _name(name), _grade(grade)
 {
+    std::cout << "Bureaucrat " << _name << " has joined the enterprise." << std::endl;
     try
     {
         if (_grade < 1)
@@ -30,6 +31,7 @@ Bureaucrat::Bureaucrat(std::string name, int grade) : _name(name), _grade(grade)
     catch (const std::out_of_range& e)
     {
         std::cerr << e.what() << std::endl;
+        std::cout << "Bureaucrat " << _name << " has been assigned grade " << _grade << "." << std::endl;
     }
 }
 

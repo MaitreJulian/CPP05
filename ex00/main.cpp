@@ -14,20 +14,19 @@
 
 int main()
 {
-    std::cout << "----- Testing Bureaucrat  -----" << std::endl;
+    std::cout << "----- Testing Bureaucrat -----" << std::endl;
     std::cout << std::endl;
     Bureaucrat bureaucrat("John Doe", 0);
-    std::cout << bureaucrat << std::endl;
     Bureaucrat bureaucrat2("Jane Doe", 151);
-    std::cout << bureaucrat2 << std::endl;
-    Bureaucrat bureaucrat3("Alice", 1);
-    std::cout << bureaucrat3 << std::endl;
     std::cout << std::endl;
     std::cout << "----- Testing addGrade and subGrade -----" << std::endl;
     std::cout << std::endl;
-    bureaucrat3.addGrade();
-    std::cout << bureaucrat3 << std::endl;
+    bureaucrat.addGrade();
     bureaucrat2.subGrade();
+    std::cout << std::endl;
+    std::cout << "----- Operator << -----" << std::endl;
+    std::cout << std::endl;
+    std::cout << bureaucrat << std::endl;
     std::cout << bureaucrat2 << std::endl;
     return 0;
 }
